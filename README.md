@@ -1,5 +1,5 @@
 <h3 align="center">
-    <img alt="Happy" width="560" title="#logo" src="./github_assets/banner.png">
+    <img alt="Happy" width="280" title="#logo" src="./github_assets/logo.png">
     <br>
 </h3>
 <p align="center"> 🚀 <strong>Happy</strong>
@@ -38,6 +38,12 @@ The project was developed using the following technologies
 - [TypeScript](https://www.typescriptlang.org/)
 - [React](https://pt-br.reactjs.org/)
 - [Styled Components](https://styled-components.com/)
+
+### Web Screenshot
+<div style="display: flex; flex-direction: 'row'; align-items: 'center';">
+       <img src="./github_assets/web1.png" width="400px">
+       <img src="./github_assets/web2.png" width="400px">
+</div>
 
 ## :fire: How to run
 
