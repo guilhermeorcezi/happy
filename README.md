@@ -47,13 +47,23 @@ The project was developed using the following technologies
 
 ## :fire: How to run
 
-### :exclamation: Front-End (Web Application)
-To start the **application** use the commands after clone this repository:
+### :exclamation: Back-End (API server)
+Clone the project on your computer. To install the dependencies and run the **Server** (development mode) execute after create an `happy` db on Postgres:
 ```bash
+cd server
+yarn typeorm:migration run  // creating the tables on happy table with postgres
+yarn install // npm install
+yarn dev:server // npm dev:server
+```
+
+### :exclamation: Front-End (Web Application)
+To start the **application** clone this repository. Create a `.env` file using `.env.example` as example and set an MapBox token there, then use the commands bellow
+```bash
+cd web
 yarn install // npm install
 yarn start // npm start
 ```
-After the process is over, the `localhost: 3000` page containing the developed project will automatically open in your browser.
+After the process is over the `localhost: 3000` page containing the developed project will automatically open in your browser.
 
 ### :recycle: How to contribute
 - First, leave a ⭐ if you like it!
