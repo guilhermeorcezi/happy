@@ -1,5 +1,5 @@
 <h3 align="center">
-    <img alt="Happy" width="280" title="#logo" src="./github_assets/logo.png">
+    <img alt="Happy" width="280" title="#logo" src="./github_assets/logo.ng">
     <br>
 </h3>
 <p align="center"> 🚀 <strong>Happy</strong>
