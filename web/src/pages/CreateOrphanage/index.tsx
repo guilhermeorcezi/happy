@@ -3,20 +3,11 @@ import { Map, Marker, TileLayer } from 'react-leaflet';
 import L from 'leaflet';
 import { useHistory } from 'react-router-dom';
 
-import { FiArrowLeft, FiPlus } from 'react-icons/fi';
-
-import mapMarkerImg from '../../assets/map-marker.svg';
+import { FiPlus } from 'react-icons/fi';
 
 import { Container, Main, Form, InputBlock, ButtonSelect } from './styles';
 import Sidebar from '../../components/Sidebar';
-
-const happyMapIcon = L.icon({
-  iconUrl: mapMarkerImg,
-
-  iconSize: [58, 68],
-  iconAnchor: [29, 68],
-  popupAnchor: [0, -60],
-});
+import mapIcon from '../../utils/mapIcon';
 
 const CreateOrphanage: React.FC = () => {
   const { goBack } = useHistory();
@@ -41,7 +32,7 @@ const CreateOrphanage: React.FC = () => {
 
               <Marker
                 interactive={false}
-                icon={happyMapIcon}
+                icon={mapIcon}
                 position={[-27.2092052, -49.6401092]}
               />
             </Map>

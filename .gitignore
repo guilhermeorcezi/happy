@@ -2,3 +2,4 @@
 *.env
 # macOS
 .DS_Store
+/server/uploads
