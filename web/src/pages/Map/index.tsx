@@ -50,7 +50,7 @@ const Map: React.FC = () => {
             className="map-popup"
           >
             Lar das meninas
-            <Link to="/">
+            <Link to="/details">
               <FiArrowRight size={20} color="#FFF" />
             </Link>
           </Popup>
