@@ -12,7 +12,7 @@ const Routes: React.FC = () => {
       <Route path="/" exact component={Landing} />
       <Route path="/find" exact component={Map} />
       <Route path="/create" exact component={CreateOrphanage} />
-      <Route path="/details" exact component={Orphanage} />
+      <Route path="/orphanage/:id" exact component={Orphanage} />
     </Switch>
   );
 };

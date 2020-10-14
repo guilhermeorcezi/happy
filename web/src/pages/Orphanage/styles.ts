@@ -1,4 +1,8 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+interface OpenDetailProps {
+  open: boolean;
+}
 
 export const Container = styled.div`
   display: flex;
@@ -137,7 +141,7 @@ export const MapContainer = styled.div`
   }
 `;
 
-export const OpenDetails = styled.div`
+export const OpenDetails = styled.div<OpenDetailProps>`
   margin-top: 24px;
 
   display: grid;
@@ -166,4 +170,14 @@ export const OpenDetails = styled.div`
     border: 1px solid #a1e9c5;
     color: #37c77f;
   }
+
+  ${props =>
+    !props.open &&
+    css`
+      div:last-child {
+        background: linear-gradient(149.97deg, #fdf0f6 8.13%, #ffffff 92.67%);
+        border: 1px solid #ffbcd4;
+        color: #ff669d;
+      }
+    `}
 `;
