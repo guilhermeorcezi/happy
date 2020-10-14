@@ -60,12 +60,14 @@ export const Form = styled.form`
     transition: background-color 0.2s;
   }
 
-  button svg {
-    margin-right: 16px;
+  > button:hover {
+    background: #36cf82;
   }
 
-  button:hover {
-    background: #36cf82;
+  .leaflet-container {
+    margin-bottom: 40px;
+    border: 1px solid #d3e2e3;
+    border-radius: 20px;
   }
 `;
 
@@ -111,13 +113,46 @@ export const InputBlock = styled.div`
     line-height: 28px;
   }
 
-  button {
-    width: 100%;
-    height: 64px;
+  button,
+  label.new-image {
+    margin-top: 0;
+    height: 96px;
     background: #f5f8fa;
     border: 1px dashed #96d2f0;
     border-radius: 20px;
     cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+`;
+
+export const ImagesContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 16px;
+
+  div {
+    position: relative;
+
+    svg {
+      position: absolute;
+      top: 2px;
+      right: 1px;
+      cursor: pointer;
+    }
+  }
+
+  input {
+    display: none;
+  }
+
+  img {
+    width: 100%;
+    height: 96px;
+    object-fit: cover;
+    border-radius: 20px;
   }
 `;
 
