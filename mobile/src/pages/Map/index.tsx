@@ -1,10 +1,11 @@
-import React, {useCallback} from 'react';
+import React, {useCallback, useState, useEffect} from 'react';
 import {StyleSheet, Dimensions} from 'react-native';
 
 import MapView, {Marker, Callout, PROVIDER_GOOGLE} from 'react-native-maps';
 import Icon from 'react-native-vector-icons/Feather';
 
 import {useNavigation} from '@react-navigation/native';
+import {or} from 'react-native-reanimated';
 import mapMarker from '../../assets/map-marker.png';
 
 import {
@@ -15,13 +16,31 @@ import {
   FooterText,
   CreateButton,
 } from './styles';
+import api from '../../services/api';
+
+interface Orphanage {
+  id: number;
+  name: string;
+  latitude: number;
+  longitude: number;
+}
 
 const Map: React.FC = () => {
+  const [orphanages, setOrphanages] = useState<Orphanage[]>([]);
   const navigation = useNavigation();
 
-  const handleNavigateToDetails = useCallback(() => {
-    navigation.navigate('OrphanageDetails');
-  }, [navigation]);
+  useEffect(() => {
+    api.get('orphanages').then((response) => {
+      setOrphanages(response.data);
+    });
+  }, []);
+
+  const handleNavigateToDetails = useCallback(
+    (id: number) => {
+      navigation.navigate('OrphanageDetails');
+    },
+    [navigation],
+  );
 
   const handleNavigateToCreate = useCallback(() => {
     navigation.navigate('SelectMapPosition');
@@ -38,23 +57,30 @@ const Map: React.FC = () => {
           latitudeDelta: 0.008,
           longitudeDelta: 0.008,
         }}>
-        <Marker
-          icon={mapMarker}
-          calloutAnchor={{x: 2.7, y: 0.8}}
-          coordinate={{
-            latitude: -22.8434484,
-            longitude: -45.2573658,
-          }}>
-          <Callout tooltip onPress={handleNavigateToDetails}>
-            <CalloutContainer>
-              <CalloutText>Lar das Meninas</CalloutText>
-            </CalloutContainer>
-          </Callout>
-        </Marker>
+        {orphanages.map((orphanage) => (
+          <Marker
+            key={orphanage.id}
+            icon={mapMarker}
+            calloutAnchor={{x: 2.7, y: 0.8}}
+            coordinate={{
+              latitude: orphanage.latitude,
+              longitude: orphanage.longitude,
+            }}>
+            <Callout
+              tooltip
+              onPress={() => handleNavigateToDetails(orphanage.id)}>
+              <CalloutContainer>
+                <CalloutText>{orphanage.name}</CalloutText>
+              </CalloutContainer>
+            </Callout>
+          </Marker>
+        ))}
       </MapView>
 
       <Footer>
-        <FooterText>2 orfanatos encontrados</FooterText>
+        <FooterText>
+          {orphanages.length} orfanatos encontrados
+        </FooterText>
         <CreateButton onPress={handleNavigateToCreate}>
           <Icon name="plus" size={20} color="#FFF" />
         </CreateButton>

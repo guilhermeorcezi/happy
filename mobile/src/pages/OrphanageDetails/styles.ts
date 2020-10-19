@@ -1,14 +1,16 @@
 import styled, {css} from 'styled-components/native';
-import {RectButton} from 'react-native-gesture-handler';
+import {RectButton, TouchableOpacity} from 'react-native-gesture-handler';
 
 interface ScheduleItemProps {
   isBlue?: boolean;
   isGreen?: boolean;
+  isRed?:boolean;
 }
 
 interface ScheduleTextProps {
   isBlue?: boolean;
   isGreen?: boolean;
+  isRed?:boolean;
 }
 
 export const Container = styled.ScrollView`
@@ -49,7 +51,7 @@ export const MapContainer = styled.View`
   background-color: #e6f7fb;
 `;
 
-export const RoutesContainer = styled.View`
+export const RoutesContainer = styled(TouchableOpacity)`
   padding: 16px;
   align-items: center;
   justify-content: center;
@@ -94,6 +96,15 @@ export const ScheduleItem = styled.View<ScheduleItemProps>`
       border-color: #b3dae2;
       border-radius: 20px;
     `}
+
+  ${({isRed}) =>
+    isRed &&
+    css`
+      background-color: #fef6f9;
+      borderWidth: 1px;
+      border-color: #ffbcd4;
+      border-radius: 20px;
+    `}
 `;
 
 export const ScheduleText = styled.Text<ScheduleTextProps>`
@@ -112,6 +123,12 @@ export const ScheduleText = styled.Text<ScheduleTextProps>`
     isBlue &&
     css`
       color: #5c8599;
+    `}
+
+  ${({isRed}) =>
+    isRed &&
+    css`
+      color: #ff669d;
     `}
 `;
 
