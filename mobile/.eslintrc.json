@@ -35,6 +35,7 @@
         "import/prefer-default-export": "off",
         "no-use-before-define":"off",
         "react/jsx-closing-bracket-location":"off",
+        "react/prop-types":"off",
         "import/extensions": [
             "error",
             "ignorePackages",

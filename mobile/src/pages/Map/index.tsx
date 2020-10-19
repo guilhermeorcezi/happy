@@ -23,6 +23,10 @@ const Map: React.FC = () => {
     navigation.navigate('OrphanageDetails');
   }, [navigation]);
 
+  const handleNavigateToCreate = useCallback(() => {
+    navigation.navigate('SelectMapPosition');
+  }, [navigation]);
+
   return (
     <Container>
       <MapView
@@ -51,7 +55,7 @@ const Map: React.FC = () => {
 
       <Footer>
         <FooterText>2 orfanatos encontrados</FooterText>
-        <CreateButton onPress={() => {}}>
+        <CreateButton onPress={handleNavigateToCreate}>
           <Icon name="plus" size={20} color="#FFF" />
         </CreateButton>
       </Footer>
