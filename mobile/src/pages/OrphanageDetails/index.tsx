@@ -58,18 +58,19 @@ const OrphanageDetails: React.FC = () => {
     });
   }, [params.id]);
 
-  if (!orphanage)
+  if (!orphanage) {
     return (
       <Container>
         <Description>Carregando...</Description>
       </Container>
     );
+  }
 
-  const handleOpenGoogleMapRoutes = useCallback(() => {
+  const handleOpenGoogleMapRoutes = () => {
     Linking.openURL(
       `https://www.google.com/maps/dir/?api=1&destination=${orphanage?.latitude},${orphanage?.longitude}`,
     );
-  }, []);
+  };
 
   return (
     <Container>
@@ -94,8 +95,8 @@ const OrphanageDetails: React.FC = () => {
         <MapContainer>
           <MapView
             initialRegion={{
-              latitude: orphanage.latitude,
-              longitude: orphanage.longitude,
+              latitude: Number(orphanage.latitude),
+              longitude: Number(orphanage.longitude),
               latitudeDelta: 0.008,
               longitudeDelta: 0.008,
             }}
@@ -107,8 +108,8 @@ const OrphanageDetails: React.FC = () => {
             <Marker
               icon={mapMarkerImg}
               coordinate={{
-                latitude: orphanage.latitude,
-                longitude: orphanage.longitude,
+                latitude: Number(orphanage.latitude),
+                longitude: Number(orphanage.longitude),
               }}
             />
           </MapView>
@@ -131,7 +132,12 @@ const OrphanageDetails: React.FC = () => {
             </ScheduleText>
           </ScheduleItem>
 
-          {orphanage.open_on_weekends && (
+          {orphanage.open_on_weekends ? (
+            <ScheduleItem isGreen>
+              <FeatherIcon name="info" size={40} color="#a1e9c5" />
+              <ScheduleText isGreen>Atendemos fim de semana</ScheduleText>
+            </ScheduleItem>
+          ) : (
             <ScheduleItem isRed>
               <FeatherIcon name="info" size={40} color="#FF669D" />
               <ScheduleText isRed>Não atendemos fim de semana</ScheduleText>

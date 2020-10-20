@@ -1,11 +1,10 @@
-import React, {useCallback, useState, useEffect} from 'react';
+import React, {useCallback, useState} from 'react';
 import {StyleSheet, Dimensions} from 'react-native';
 
 import MapView, {Marker, Callout, PROVIDER_GOOGLE} from 'react-native-maps';
 import Icon from 'react-native-vector-icons/Feather';
 
-import {useNavigation} from '@react-navigation/native';
-import {or} from 'react-native-reanimated';
+import {useNavigation, useFocusEffect} from '@react-navigation/native';
 import mapMarker from '../../assets/map-marker.png';
 
 import {
@@ -29,15 +28,15 @@ const Map: React.FC = () => {
   const [orphanages, setOrphanages] = useState<Orphanage[]>([]);
   const navigation = useNavigation();
 
-  useEffect(() => {
+  useFocusEffect(() => {
     api.get('orphanages').then((response) => {
       setOrphanages(response.data);
     });
-  }, []);
+  });
 
   const handleNavigateToDetails = useCallback(
     (id: number) => {
-      navigation.navigate('OrphanageDetails');
+      navigation.navigate('OrphanageDetails', {id});
     },
     [navigation],
   );
@@ -63,8 +62,8 @@ const Map: React.FC = () => {
             icon={mapMarker}
             calloutAnchor={{x: 2.7, y: 0.8}}
             coordinate={{
-              latitude: orphanage.latitude,
-              longitude: orphanage.longitude,
+              latitude: Number(orphanage.latitude),
+              longitude: Number(orphanage.longitude),
             }}>
             <Callout
               tooltip
@@ -78,9 +77,7 @@ const Map: React.FC = () => {
       </MapView>
 
       <Footer>
-        <FooterText>
-          {orphanages.length} orfanatos encontrados
-        </FooterText>
+        <FooterText>{orphanages.length} orfanatos encontrados</FooterText>
         <CreateButton onPress={handleNavigateToCreate}>
           <Icon name="plus" size={20} color="#FFF" />
         </CreateButton>
