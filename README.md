@@ -49,7 +49,7 @@ The project was developed using the following technologies
 <div style="display: flex; flex-direction: 'row';">
    <img src="./github_assets/mobile1.png" width="180">
    <img src="./github_assets/mobile2.png" width="180">
-   <img src="./github_assets/mobile3.png" width="180">
+   <img src="./github_assets/mobile 3.png" width="180">
 </div>
 
 ## :fire: How to run
