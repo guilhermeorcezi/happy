@@ -45,7 +45,6 @@ export default class createOrphanages1602611003232
           {
             name: 'open_on_weekends',
             type: 'boolean',
-            default: false,
           },
         ],
       }),
