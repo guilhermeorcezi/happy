@@ -45,6 +45,13 @@ The project was developed using the following technologies
        <img src="./github_assets/web2.png" width="400px">
 </div>
 
+### Mobile Screenshot
+<div style="display: flex; flex-direction: 'row';">
+   <img src="./github_assets/mobile1.png" width="180">
+   <img src="./github_assets/mobile2.png" width="180">
+   <img src="./github_assets/mobile3.png" width="180">
+</div>
+
 ## :fire: How to run
 
 ### :exclamation: Back-End (API server)
@@ -71,6 +78,16 @@ After the process is over the `localhost: 3000` page containing the developed pr
 - Create a branch with your feature: `git checkout -b my-feature`
 - Commit your changes: `git commit -m 'feat: My new feature'`
 - Push your branch: `git push origin my-feature`
+
+### :exclamation: Mobile
+
+To look the mobile application with React Native, first you need to put the server's IP (or computer's IP) in the `src/services/api.js file` and then execute the commands:
+``` bash
+# It's necessary to have an emulador isntalled to emulate the application
+cd mobile
+yarn install // npm installation
+yarn android // npm android
+```
 
 ## :memo: License
 
