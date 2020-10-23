@@ -29,7 +29,7 @@
 
 ## :bookmark: About
 
-<strong>Happy</strong> is a project to help you find orphanages in your area to make kids happy
+<strong>Happy</strong> is a project to help you find orphanages in your area to make kids happy!
 
 ## :rocket: Technologies
 
